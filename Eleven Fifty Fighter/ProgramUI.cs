@@ -61,34 +61,41 @@ namespace Eleven_Fifty_Fighter
 
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Please choose your opponent\n1. Alec\n2. Philip\n3. Casey\n4. Adam\n5. Andrew");
+            Console.WriteLine(
+                "You must defeat all 5 instructors to receive your Gold Badge.\n" +
+                "\n1. Alec" +
+                "\n2. Philip" +
+                "\n3. Casey" +
+                "\n4. Adam" +
+                "\n5. Andrew");
+            Console.Write("\nChoose Your Opponent: ");
 
             string input = Console.ReadLine();
-            if (input == "1" || input == "Alec")
+            if (input == "1" || input == "Alec" || input == "alec")
             {
                 Console.WriteLine(alecImg);
                 round1.PlaySync();
                 Game();
             }
-            else if (input == "2" || input == "Philip")
+            else if (input == "2" || input == "Philip" || input == "philip")
             {
                 Console.WriteLine(philipImg);
                 round2.PlaySync();
                 Game();
             }
-            else if (input == "3" || input == "Casey")
+            else if (input == "3" || input == "Casey" || input == "casey")
             {
                 Console.WriteLine(caseyImg);
                 round3.PlaySync();
                 Game();
             }
-            else if (input == "4" || input == "Adam")
+            else if (input == "4" || input == "Adam" || input == "adam")
             {
                 Console.WriteLine(adamImg);
                 round4.PlaySync();
                 Game();
             }
-            else if (input == "5" || input == "Andrew")
+            else if (input == "5" || input == "Andrew" || input == "andrew")
             {
                 Console.WriteLine(andrewImg);
                 round5.PlaySync();
@@ -103,7 +110,7 @@ namespace Eleven_Fifty_Fighter
         }
         public void Game()
         {
-            int fighterHealth = 1;
+            int fighterHealth = 10;
 
             var punch = new SoundPlayer();
             punch.SoundLocation = @"C:\Users\halo4\source\repos\PairProgrammingConsoleGame\Eleven Fifty Fighter\Realistic_Punch.wav";
@@ -136,13 +143,13 @@ namespace Eleven_Fifty_Fighter
                         int fighterAttack = RandomNumber();
                         fighterHealth -= playerAttack;
                         punch.PlaySync();
-                        Console.WriteLine("Player attacks Fighter!");
-                        Console.WriteLine("Attack strength: " + playerAttack);
+                        Console.WriteLine("You asked Instructor a question!");
                         if (playerAttack == 0)
                         {
-                            Console.WriteLine("The Fighter dodged your attack!");
+                            Console.WriteLine("The Instructor asked if you googled it!");
                             perfectDodge.PlaySync();
                         }
+                        Console.WriteLine("Attack strength: " + playerAttack);
                         if (fighterHealth >= 6)
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
@@ -155,7 +162,7 @@ namespace Eleven_Fifty_Fighter
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                         }
-                        Console.WriteLine("Fighter Health: " + fighterHealth);
+                        Console.WriteLine("Instructor HP: " + fighterHealth);
                         Console.ForegroundColor = ConsoleColor.White;
                         if (fighterHealth <= 0)
                         {
@@ -168,13 +175,13 @@ namespace Eleven_Fifty_Fighter
                         Console.ReadLine();
                         playerHealth -= fighterAttack;
                         punch.PlaySync();
-                        Console.WriteLine("Fighter attacks Player!");
-                        Console.WriteLine("Attack strength: " + fighterAttack);
+                        Console.WriteLine("Instructor explained a new concept to you!");
                         if (fighterAttack == 0)
                         {
-                            Console.WriteLine("You dodged the attack!");
+                            Console.WriteLine("Internet Connection Unstable!");
                             perfectDodge.PlaySync();
                         }
+                        Console.WriteLine("Attack strength: " + fighterAttack);
                         if (playerHealth >= 20)
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
@@ -187,13 +194,13 @@ namespace Eleven_Fifty_Fighter
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                         }
-                        Console.WriteLine("Player Health: " + playerHealth);
+                        Console.WriteLine("Your HP: " + playerHealth);
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Press 'Enter' for next move.");
                         Console.ReadLine();
                     }
                     counter++;
-                    fighterHealth = 1;
+                    fighterHealth = 10;
                     if (counter == 5 && playerHealth < 1)
                     {
                         Console.WriteLine("\nYou won... but at what cost...");
@@ -247,7 +254,7 @@ namespace Eleven_Fifty_Fighter
                 }
                 else
                 {
-                    Console.WriteLine("\nThat's not an official EFF move!\nPress 'Enter' to try again.");
+                    Console.WriteLine("\nThat's not an official EFF move!\n\nPress 'Enter' to try again.");
                     Console.ReadLine();
                 }
             }
